@@ -1,0 +1,34 @@
+<div class="toolbar">
+    <button (click)="execCommand('bold')"><i class="fas fa-bold"></i></button>
+    <button (click)="execCommand('italic')"><i class="fas fa-italic"></i></button>
+    <button (click)="execCommand('underline')"><i class="fas fa-underline"></i></button>
+    <button (click)="execCommand('strikeThrough')"><i class="fas fa-strikethrough"></i></button>
+    
+    <input type="number" min="1" max="7" placeholder="Font Size" (change)="changeFontSize($event)" />
+  
+    <input type="color" (input)="changeTextColor($event)" />
+  
+    <button (click)="toggleColorPicker()">Background Color</button>
+    <input type="color" *ngIf="showColorPicker" (input)="changeBackgroundColor($event)" />
+  
+    <button (click)="execCommand('insertUnorderedList')"><i class="fas fa-list-ul"></i></button>
+    <button (click)="execCommand('insertOrderedList')"><i class="fas fa-list-ol"></i></button>
+    
+    <button (click)="insertLink()"><i class="fas fa-link"></i></button>
+    <button (click)="insertImage()"><i class="fas fa-image"></i></button>
+    <button (click)="chooseFile()"><i class="fas fa-upload"></i></button>
+    <button (click)="insertVideo()"><i class="fas fa-video"></i></button>
+    <button (click)="execCommand('formatBlock', 'blockquote')">“ ”</button>
+  </div>
+  
+  <div
+    contenteditable="true"
+    class="editor"
+    (input)="onInput($event)"
+  ></div>
+  
+  <div>
+    <h3>Output:</h3>
+    <div [innerHTML]="editorContent"></div>
+  </div>
+  
